@@ -7,6 +7,14 @@ void setup()
 // The pin to control the Servo is pin 12 in this example
 TryServo.attach(12);
 }
+
+int bottomServo(color);
+{
+if blahsblash
+
+
+}
+
 void loop() 
 {
 // angles defined for positioning in this example are 90, 180 and 0 degrees
