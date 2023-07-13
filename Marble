@@ -1,1 +1,24 @@
+#include <Servo.h> 
+//The above line of code calls a servo library
+// Declares there is a servo and names it TryServo 
+Servo TryServo; 
+void setup() 
+{
+// The pin to control the Servo is pin 12 in this example
+TryServo.attach(12);
+}
+void loop() 
+{
+// angles defined for positioning in this example are 90, 180 and 0 degrees
+TryServo.write(90);
+delay(1000);
+TryServo.write(180);
+delay(1000);
+TryServo.write(90);
+delay(1000);
+TryServo.write(0);
+delay(1000);
+TryServo.write(90);
+delay(1000);
+}
 
