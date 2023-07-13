@@ -1,16 +1,19 @@
 #include <Servo.h> //Calls a servo library
 
-Servo TryServo; //Declares there is a servo and names it TryServo 
+Servo topServo; //Declares a servo named topServo 
+Servo bottomServo; //Declares a servo named bottomServo
 
 int pulsePin = 7; //OUT on color sensor goes to pin 7
 int prescale0Pin = 3; //S0 on sensor goes to Arduino pin 3
 int prescale1Pin = 4; //S1 on color sensor goes to Arduino pin 4
 int colorSelect0pin = 5; //S2 on color sensor goes to Arduino pin 5
 int colorSelect1pin = 6; //S3 on color sensor goes to Arduino pin 6
+bool moved == false
 
 void setup() 
 {
-TryServo.attach(12); // The pin to control the Servo is pin 12 
+topServo.attach(12); // attach topServo to pin 12
+bottomServo.attach(13); // attach bottomServo to pin 13
 }
 
 int colorSensor();
@@ -27,24 +30,6 @@ Serial.begin(9600); //9600 in the code below is a baud rate and governs the rate
  
 Serial.println("Color Reader"); // This line just shows up on the serial monitor
 pinMode(10,OUTPUT); //add an LED with a series resistor on pin 10 to light when the light sensor is reading
-
-//add set up pin information here for servos for final project
-}
-
-
-int bottomServo(color);
-{
-if blahsblash
-}
-
-
-void loop() 
-{
-
-int colorSensor(); 
-{
-
-//For the final project the servo code to move marble from hopper to light sensor goes here
 
 digitalWrite(10,HIGH); // The next line turns on the LED on pin 10 and signals the color sensor is being read
 
@@ -127,19 +112,52 @@ pulseIn(pulsePin,HIGH);
 return (millis()-start)
 }
 
+}
+
+
+int bottomServoCollect(color);
+{
+moved = false
+if color == RED;
+    bottomServo.write(0);
+    moved = true;
+    return moved;
+elseif color == GREEN;
+    bottomServo.write(90);
+    moved = true;
+    return moved;
+elseif color == WHITE;
+    bottomServo.write(180);
+    moved = true;
+    return moved;
+else;
+    disp('no color');
+}
+
+int topServoCollect() {
+    topServo.write(0);
+}
+
+int topServoDispense(moved) {
+    if (moved == true) {
+        topServo.write(180);
+    }
+    else (moved == false) {
+        topServo.write(0);
+    }
+}
+    
+
+
+void loop() 
+{
+topServoCollect();
+colorSensor();
+bottomServoCollect();
+topServoDispense();
 
 
 
-// angles defined for positioning in this example are 90, 180 and 0 degrees
-TryServo.write(90);
-delay(1000);
-TryServo.write(180);
-delay(1000);
-TryServo.write(90);
-delay(1000);
-TryServo.write(0);
-delay(1000);
-TryServo.write(90);
-delay(1000);
+
 }
 
