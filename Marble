@@ -1,7 +1,6 @@
-#include <Servo.h> 
-//The above line of code calls a servo library
-// Declares there is a servo and names it TryServo 
-Servo TryServo; 
+#include <Servo.h> //Calls a servo library
+
+Servo TryServo; //Declares there is a servo and names it TryServo 
 
 int pulsePin = 7; //OUT on color sensor goes to pin 7
 int prescale0Pin = 3; //S0 on sensor goes to Arduino pin 3
@@ -11,9 +10,7 @@ int colorSelect1pin = 6; //S3 on color sensor goes to Arduino pin 6
 
 void setup() 
 {
-
-// The pin to control the Servo is pin 12 in this example
-TryServo.attach(12);
+TryServo.attach(12); // The pin to control the Servo is pin 12 
 }
 
 int colorSensor();
@@ -35,14 +32,10 @@ pinMode(10,OUTPUT); //add an LED with a series resistor on pin 10 to light when 
 }
 
 
-
 int bottomServo(color);
 {
 if blahsblash
 }
-
-
-
 
 
 void loop() 
@@ -64,11 +57,11 @@ long white=readWhite();
 
 if ((red<green)&&(red<blue))
 {
-Serial.println("RED"); //Serial.println("Measured value");
-Serial.println(red) //Serial.println(red);
-Serial.println(blue) //Serial.println(blue);
-Serial.println(green) //Serial.println(green);
-Serial.println(white) //Serial.println(white);
+Serial.println("RED"); //Serial.println("Measured value")
+Serial.println(red); //Serial.println(red)
+Serial.println(blue); //Serial.println(blue)
+Serial.println(green); //Serial.println(green)
+Serial.println(white); //Serial.println(white)
 }
 
 if((green < red) && (green < blue))
