@@ -1,0 +1,101 @@
+#include <Servo.h>
+
+#define S0 3
+#define S1 4
+#define S2 5
+#define S3 6
+#define sensorOut 7
+
+int frequency = 0;
+
+
+void setup() {
+  // put your setup code here, to run once:
+  pinMode(S0, OUTPUT);
+  pinMode(S1, OUTPUT);
+  pinMode(S2, OUTPUT);
+  pinMode(S3, OUTPUT);
+  pinMode(sensorOut, INPUT);
+
+  digitalWrite(S0, HIGH);
+  digitalWrite(S1, LOW);
+
+  Serial.begin(9600);
+
+}
+
+
+int colorSense() {
+  int frequency = 0;
+  
+  int red = 0;
+  int blue = 0;
+  int green = 0;
+  int color = 0;
+
+  //RED
+  digitalWrite(S2, LOW);
+  digitalWrite(S3, LOW);
+  frequency = pulseIn(sensorOut, LOW);
+  frequency = map(frequency, 75,135,255,0);
+  red = frequency;
+  Serial.print("R = ");
+  Serial.print(frequency);
+  Serial.print(" ");
+  delay(100);
+
+  //GREEN
+  digitalWrite(S2, HIGH);
+  digitalWrite(S3, HIGH);
+  frequency = pulseIn(sensorOut, LOW);
+  frequency = map(frequency, 83,140,255,0);
+  green = frequency;
+  Serial.print("G= ");
+  Serial.print(frequency);
+  Serial.print(" ");
+  delay(100);
+
+  //BLUE
+  digitalWrite(S2, LOW);
+  digitalWrite(S3, HIGH);
+  frequency = pulseIn(sensorOut, LOW);
+  frequency = map(frequency, 45,104,255,0);
+  blue = frequency;
+  Serial.print("B= ");
+  Serial.print(frequency);
+  Serial.println(" ");
+  delay(100);
+
+  Serial.print(red);
+  Serial.print(" ");
+  Serial.print(green);
+  Serial.print(" ");
+  Serial.print(blue);
+  Serial.print(" ");
+
+  Serial.println(" ");
+  delay(500);
+
+
+  if (red > green && red > blue) {
+    color = "RED";
+    Serial.println("RED");
+    return color;
+  }
+  else if ( green > red && green > blue) {
+    color = "GREEN";
+    Serial.println("GREEN");
+    return color;
+  }
+  else if (blue > red && blue > green) {
+    color = "BLUE";
+    Serial.println("BLUE");
+    return color;
+  }
+  
+
+}
+void loop() {
+  // put your main code here, to run repeatedly:
+colorSense();
+}
