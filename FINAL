@@ -154,7 +154,10 @@ colorSense();
 positionTray(color);
 dispenseMarble();
 Serial.println(color);
-Serial.println("Red:    Blue:   Green:    ");
+Serial.println("Totals");
+Serial.println(redTotal);
+Serial.println(blueTotal);
+Serial.println(greenTotal);
 //bottomServo.write(180);
 //delay(1000);
 }
